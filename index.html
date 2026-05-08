@@ -1,0 +1,193 @@
+<!-- =========================================
+HOME - index.html
+TAILWIND CSS
+========================================= -->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Doces da Roça</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .title {
+      font-family: 'Lobster', cursive;
+    }
+  </style>
+
+</head>
+
+<body class="bg-zinc-100 p-6">
+
+  <main class="bg-[#FFF8EE] rounded-3xl overflow-hidden shadow-2xl">
+
+    <!-- HEADER -->
+    <header class="flex items-center justify-between px-14 py-8 border-b border-[#F2DDBD]">
+
+      <!-- LOGO -->
+      <div>
+        <h1 class="text-4xl font-bold text-[#6B3B1E]">
+          Doces da Roça
+        </h1>
+
+        <p class="text-sm tracking-[4px] text-[#C97D47] uppercase">
+          Festa Junina
+        </p>
+      </div>
+
+      <!-- MENU -->
+            <!-- MENU -->
+      <nav class="flex gap-10 text-[#6B3B1E] font-medium">
+
+        <a href="./index.html" class="hover:text-pink-600 duration-300">
+          Início
+        </a>
+
+        <a href="./sobre.html" class="hover:text-pink-600 duration-300">
+          Sobre
+        </a>
+
+        <a href="./doce.html" class="hover:text-pink-600 duration-300">
+          Doces
+        </a>
+
+      </nav>
+
+      
+
+        
+
+      </nav>
+
+      <!-- BOTÃO -->
+      <button class="bg-pink-500 hover:bg-pink-600 duration-300 text-white px-8 py-4 rounded-full shadow-lg"
+       onclick="window.location.href='./doce.html'">
+        Faça seu pedido
+      </button>
+
+    </header>
+
+    <!-- HERO -->
+    <section class="grid grid-cols-2 items-center px-20 py-20 gap-14">
+
+      <!-- TEXTO -->
+      <div>
+
+        <h2 class="text-7xl font-bold leading-[90px] text-[#5A2E15]">
+
+          O sabor <br>
+          da tradição
+
+          <span class="title text-pink-500 block mt-3">
+            que adoça
+            nossa festa!
+          </span>
+
+        </h2>
+
+        <p class="mt-8 text-zinc-600 text-xl leading-10">
+          Doces típicos feitos com amor para deixar sua Festa Junina ainda mais especial.
+        </p>
+        <button class="mt-10 bg-pink-500 hover:bg-pink-600 duration-300 text-white px-10 py-5 rounded-full text-lg shadow-xl"
+          onclick="window.location.href='./sobre.html'">
+          Conheça nossos doces →
+        </button>
+
+      </div>
+
+      <!-- IMAGEM -->
+      <div>
+
+        <img
+          src="https://images.unsplash.com/photo-1519676867240-f03562e64548?q=80&w=1200&auto=format&fit=crop"
+          class="rounded-[40px] shadow-2xl h-[600px] w-full object-cover">
+
+      </div>
+
+    </section>
+
+    <!-- BENEFÍCIOS -->
+    <section class="grid grid-cols-4 gap-10 px-20 py-16 bg-[#FFF3E0]">
+
+      <div class="text-center">
+
+        <div class="text-5xl mb-4">
+          ❤️
+        </div>
+
+        <h3 class="font-bold text-2xl text-[#5A2E15]">
+          Feito com amor
+        </h3>
+
+        <p class="text-zinc-600 mt-3">
+          Receitas tradicionais passadas de geração em geração.
+        </p>
+
+      </div>
+
+      <div class="text-center">
+
+        <div class="text-5xl mb-4">
+          🌽
+        </div>
+
+        <h3 class="font-bold text-2xl text-[#5A2E15]">
+          Ingredientes selecionados
+        </h3>
+
+        <p class="text-zinc-600 mt-3">
+          Tudo fresquinho e de qualidade.
+        </p>
+
+      </div>
+
+      <div class="text-center">
+
+        <div class="text-5xl mb-4">
+          🍮
+        </div>
+
+        <h3 class="font-bold text-2xl text-[#5A2E15]">
+          Sabor que encanta
+        </h3>
+
+        <p class="text-zinc-600 mt-3">
+          Doces que lembram momentos felizes.
+        </p>
+
+      </div>
+
+      <div class="text-center">
+
+        <div class="text-5xl mb-4">
+          🧺
+        </div>
+
+        <h3 class="font-bold text-2xl text-[#5A2E15]">
+          Perfeito para sua festa
+        </h3>
+
+        <p class="text-zinc-600 mt-3">
+          Encomendas para qualquer tipo de celebração.
+        </p>
+
+      </div>
+
+    </section>
+
+  </main>
+
+</body>
+
+</html>

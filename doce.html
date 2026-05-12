@@ -1,141 +1,848 @@
 <!-- =========================================
 DOCES - doces.html
+
 ========================================= -->
 
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Doces</title>
+  <title>Doces da Roça</title>
 
-  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
-  <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Fonts -->
+  <link
+    href="https://://fonts.googleapis.com/css2?family=Lobster&family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
 
   <style>
     body {
       font-family: 'Poppins', sans-serif;
     }
-  </style>
 
+    .title {
+      font-family: 'Lobster', cursive;
+    }
+  </style>
 </head>
 
-<body class="bg-zinc-100 p-6">
+<body class="bg-zinc-100 p-4 md:p-6">
 
-  <main class="bg-[#FFF8EE] rounded-3xl p-16 shadow-2xl">
+  <main class="bg-[#FFF8EE] rounded-3xl overflow-hidden shadow-2xl min-h-screen">
 
-    <h1 class="text-6xl font-bold text-center text-[#5A2E15] mb-16">
-      Nossos doces ❤️
-    </h1>
+    <!-- HEADER -->
+    <header
+      class="flex flex-col lg:flex-row items-center justify-between gap-6 px-6 lg:px-14 py-8 border-b border-[#F2DDBD]">
 
-    <!-- GRID -->
-    <section class="grid grid-cols-3 gap-10">
+      <!-- LOGO -->
+      <div class="text-center lg:text-left">
+        <h1 class="text-4xl font-bold text-[#6B3B1E] title">
+          Doces da Roça
+        </h1>
 
-      <!-- CARD -->
-      <div class="bg-white rounded-3xl overflow-hidden shadow-xl">
-
-        <img
-          src="https://images.unsplash.com/photo-1621939514649-280e2ee25f60?q=80&w=1200&auto=format&fit=crop"
-          class="h-64 w-full object-cover">
-
-        <div class="p-8">
-
-          <h2 class="text-3xl font-bold text-[#5A2E15]">
-            Pé de Moleque
-          </h2>
-
-          <p class="text-zinc-600 mt-3">
-            Crocante e irresistível.
-          </p>
-
-          <div class="flex items-center justify-between mt-6">
-
-            <span class="text-pink-500 font-bold text-2xl">
-              R$ 4,00
-            </span>
-
-            <button class="bg-pink-500 text-white px-5 py-3 rounded-full">
-              🛒
-            </button>
-
-          </div>
-
-        </div>
-
+        <p class="text-sm tracking-[4px] text-[#C97D47] uppercase">
+          Festa Junina
+        </p>
       </div>
 
-      <!-- CARD -->
-      <div class="bg-white rounded-3xl overflow-hidden shadow-xl">
+      <!-- MENU -->
+      <nav class="flex gap-6 text-[#6B3B1E] font-medium">
+        <a href="./index.html" class="hover:text-pink-600 duration-300">
+          Início
+        </a>
 
-        <img
-          src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?q=80&w=1200&auto=format&fit=crop"
-          class="h-64 w-full object-cover">
+        <a href="./sobre.html" class="hover:text-pink-600 duration-300">
+          Sobre
+        </a>
 
-        <div class="p-8">
+        <a href="./doce.html"
+          class="hover:text-pink-600 duration-300 border-b-2 border-pink-500">
+          Doces
+        </a>
+      </nav>
 
-          <h2 class="text-3xl font-bold text-[#5A2E15]">
-            Paçoca
-          </h2>
+      <!-- BOTÃO -->
+      <button onclick="abrirModalCarrinho()"
+        class="relative bg-pink-500 hover:bg-pink-600 duration-300 text-white px-8 py-4 rounded-full shadow-lg flex items-center gap-3">
 
-          <p class="text-zinc-600 mt-3">
-            Tradicional e saborosa.
-          </p>
+        🛒 Ver Carrinho
 
-          <div class="flex items-center justify-between mt-6">
+        <span id="carrinho-badge"
+          class="hidden absolute -top-2 -right-2 bg-[#6B3B1E] text-white text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center">
+          0
+        </span>
+      </button>
 
-            <span class="text-pink-500 font-bold text-2xl">
-              R$ 3,00
-            </span>
+    </header>
 
-            <button class="bg-pink-500 text-white px-5 py-3 rounded-full">
-              🛒
-            </button>
+    <!-- TÍTULO -->
+    <section class="px-6 lg:px-20 pt-14 pb-4">
 
-          </div>
+      <h2 class="text-4xl md:text-6xl font-bold text-center text-[#5A2E15] mb-4">
+        Nossos doces ❤️
+      </h2>
 
-        </div>
+      <p class="text-center text-zinc-500 text-lg mb-10">
+        Clique em um doce para ver detalhes
+      </p>
 
+      <!-- CATEGORIAS -->
+      <nav id="nav-categorias"
+        class="flex gap-3 justify-center flex-wrap mb-10">
+      </nav>
+
+      <!-- TÍTULO -->
+      <div id="categoria-titulo"
+        class="text-2xl font-bold text-[#5A2E15] mb-6 border-l-4 border-pink-500 pl-4">
+        Produtos
       </div>
 
-      <!-- CARD -->
-      <div class="bg-white rounded-3xl overflow-hidden shadow-xl">
+    </section>
 
-        <img
-          src="https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?q=80&w=1200&auto=format&fit=crop"
-          class="h-64 w-full object-cover">
+    <!-- PRODUTOS -->
+    <section class="px-6 lg:px-20 pb-20">
 
-        <div class="p-8">
-
-          <h2 class="text-3xl font-bold text-[#5A2E15]">
-            Cocada
-          </h2>
-
-          <p class="text-zinc-600 mt-3">
-            Doce e macia.
-          </p>
-
-          <div class="flex items-center justify-between mt-6">
-
-            <span class="text-pink-500 font-bold text-2xl">
-              R$ 3,00
-            </span>
-
-            <button class="bg-pink-500 text-white px-5 py-3 rounded-full">
-              🛒
-            </button>
-
-          </div>
-
-        </div>
-
+      <div id="lista-produtos"
+        class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10">
       </div>
 
     </section>
 
   </main>
+  <footer class="bg-pink-800 text-white text-center p-12 mt-[5vh]">
+    <p>© 2026 Doces da Festa Junina - Todos os direitos reservados</p>
+
+    <p class="mb-2">Na Prefeitura - Sorocaba-Sp</p>
+    <p class="mb-2">(15) 99119-4475</p>
+    <p class="mb-2">Aberto de Quinta-feira até Domingo 19h ás 23h</p>
+
+</footer>
+
+  <!-- MODAL DETALHES -->
+  <div id="detalhes-modal"
+    class="fixed inset-0 bg-black/70 z-50 flex justify-center items-center opacity-0 pointer-events-none transition-all duration-300 p-4">
+
+    <div id="detalhes-modal-content"
+      class="bg-[#FFF8EE] w-full max-w-[450px] rounded-3xl overflow-hidden scale-95 transition-all duration-300 relative">
+
+      <!-- FECHAR -->
+      <button onclick="fecharModalDetalhes()"
+        class="absolute top-4 right-4 bg-white w-10 h-10 rounded-full shadow flex items-center justify-center text-2xl hover:text-pink-500 z-10">
+        &times;
+      </button>
+
+      <!-- IMG -->
+      <div class="h-[280px] bg-[#FFF3E0] p-6">
+        <img id="detalhes-img"
+          class="w-full h-full object-cover rounded-2xl"
+          src="">
+      </div>
+
+      <!-- INFO -->
+      <div class="p-6">
+
+        <h2 id="detalhes-nome"
+          class="text-3xl font-bold text-[#5A2E15] mb-2">
+        </h2>
+
+        <p id="detalhes-preco"
+          class="text-2xl font-black text-pink-500 mb-4">
+        </p>
+
+        <div class="bg-white rounded-xl p-4 border border-[#F2DDBD] mb-6">
+          <p id="detalhes-desc"
+            class="text-zinc-600 text-sm">
+          </p>
+        </div>
+
+        <button id="detalhes-btn-add"
+          class="w-full bg-pink-500 hover:bg-pink-600 text-white py-4 rounded-full font-bold">
+          🛒 Adicionar ao Carrinho
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- FOOTER CARRINHO -->
+  <div id="carrinho-footer"
+    onclick="abrirModalCarrinho()"
+    class="fixed bottom-0 left-0 w-full bg-pink-500 text-white p-4 z-40 shadow-xl translate-y-full transition-all duration-300 cursor-pointer">
+
+    <div class="max-w-6xl mx-auto flex justify-between items-center">
+
+      <div>
+        <p class="text-sm opacity-90">Resumo do Pedido</p>
+        <p class="text-xl font-bold">
+          Total:
+          <span id="carrinho-total">
+            R$ 0,00
+          </span>
+        </p>
+      </div>
+
+      <button
+        class="bg-white text-pink-600 px-6 py-2 rounded-full font-bold">
+        Ver Carrinho 🛒
+      </button>
+
+    </div>
+
+  </div>
+
+  <!-- MODAL CARRINHO -->
+  <div id="carrinho-modal"
+    class="fixed inset-0 bg-black/60 z-50 flex justify-center items-center opacity-0 pointer-events-none transition-all duration-300 p-4">
+
+    <div id="carrinho-modal-content"
+      class="bg-[#FFF8EE] w-full max-w-[550px] rounded-3xl overflow-hidden scale-95 transition-all duration-300">
+
+      <!-- HEADER -->
+      <div class="p-6 border-b border-[#F2DDBD] flex justify-between items-center">
+
+        <h2 class="text-2xl font-bold text-[#5A2E15]">
+          🛒 Seu Carrinho
+        </h2>
+
+        <button onclick="fecharModalCarrinho()"
+          class="text-3xl text-zinc-400 hover:text-black">
+          &times;
+        </button>
+
+      </div>
+
+      <!-- ITENS -->
+      <div id="carrinho-itens-container"
+        class="p-6 max-h-[400px] overflow-y-auto flex flex-col gap-4">
+      </div>
+
+      <!-- FOOTER -->
+      <div class="p-6 border-t border-[#F2DDBD] bg-[#FFF3E0]">
+
+        <div class="flex justify-between items-center mb-5">
+
+          <span class="font-bold text-[#5A2E15]">
+            Total:
+          </span>
+
+          <span id="modal-carrinho-total"
+            class="text-2xl font-black text-pink-500">
+            R$ 0,00
+          </span>
+
+        </div>
+
+        <button onclick="fecharPedido()"
+          class="w-full bg-pink-500 hover:bg-pink-600 text-white py-4 rounded-full font-bold">
+          Finalizar Pedido 📍
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+    
+
+    // =====================================================
+    // CONFIG
+    // =====================================================
+
+    const API_URL = 'http://localhost:3000/api';
+
+    let carrinho = [];
+    let categoriasData = [];
+
+    // =====================================================
+    // ELEMENTOS
+    // =====================================================
+
+    const navCategorias = document.getElementById('nav-categorias');
+    const listaProdutos = document.getElementById('lista-produtos');
+    const categoriaTitulo = document.getElementById('categoria-titulo');
+
+    // =====================================================
+    // API
+    // =====================================================
+
+    async function carregarCategorias() {
+
+      try {
+
+        navCategorias.innerHTML = `
+          <p class="text-zinc-400">
+            Carregando categorias...
+          </p>
+        `;
+
+        const res = await fetch(`${API_URL}/categorias`);
+
+        if (!res.ok) {
+          throw new Error('Erro ao carregar categorias');
+        }
+
+        categoriasData = await res.json();
+
+        renderizarCategorias();
+
+        if (categoriasData.length > 0) {
+          selecionarCategoria(
+            categoriasData[0].id,
+            categoriasData[0].nome
+          );
+        }
+
+      } catch (err) {
+
+        console.error(err);
+
+        navCategorias.innerHTML = `
+          <p class="text-red-500 font-bold">
+            Erro ao carregar categorias.
+          </p>
+        `;
+      }
+    }
+
+    function renderizarCategorias() {
+
+      navCategorias.innerHTML = '';
+
+      categoriasData.forEach(cat => {
+
+        const btn = document.createElement('button');
+
+        btn.className = `
+          btn-cat
+          px-6 py-2
+          rounded-full
+          bg-[#F2DDBD]
+          text-[#6B3B1E]
+          hover:bg-pink-500
+          hover:text-white
+          duration-300
+          font-semibold
+        `;
+
+        btn.innerText = cat.nome;
+
+        btn.onclick = () => {
+          selecionarCategoria(cat.id, cat.nome);
+        };
+
+        navCategorias.appendChild(btn);
+
+      });
+
+    }
+
+    async function selecionarCategoria(id, nome) {
+
+      categoriaTitulo.innerText = nome;
+
+      document.querySelectorAll('.btn-cat')
+        .forEach(btn => {
+
+          btn.classList.remove(
+            'bg-pink-500',
+            'text-white'
+          );
+
+          if (btn.innerText === nome) {
+
+            btn.classList.add(
+              'bg-pink-500',
+              'text-white'
+            );
+
+          }
+
+        });
+
+      carregarProdutos(id);
+
+    }
+
+    async function carregarProdutos(categoriaId) {
+
+      listaProdutos.innerHTML = `
+        <div class="col-span-3 py-20 text-center text-zinc-400">
+          Carregando produtos...
+        </div>
+      `;
+
+      try {
+
+        const res = await fetch(
+          `${API_URL}/produtos?categoriaId=${categoriaId}`
+        );
+
+        if (!res.ok) {
+          throw new Error('Erro ao carregar produtos');
+        }
+
+        const produtos = await res.json();
+
+        renderizarProdutos(produtos);
+
+      } catch (err) {
+
+        console.error(err);
+
+        listaProdutos.innerHTML = `
+          <div class="col-span-3 text-center text-red-500 font-bold py-20">
+            Erro ao carregar produtos.
+          </div>
+        `;
+      }
+    }
+
+    function renderizarProdutos(produtos) {
+
+      listaProdutos.innerHTML = '';
+
+      if (produtos.length === 0) {
+
+        listaProdutos.innerHTML = `
+          <div class="col-span-3 text-center text-zinc-400 py-20">
+            Nenhum produto encontrado.
+          </div>
+        `;
+
+        return;
+      }
+
+      produtos.forEach(p => {
+
+        const nome = (p.nome || '').replace(/'/g, "\\'");
+        const descricao = (p.descricao || '').replace(/'/g, "\\'");
+        const imagem = p.imagem || 'https://via.placeholder.com/400x300';
+
+        const preco = Number(p.preco || 0);
+
+        const precoFormatado =
+          preco.toLocaleString(
+            'pt-BR',
+            {
+              style: 'currency',
+              currency: 'BRL'
+            }
+          );
+
+        const card = document.createElement('div');
+
+        card.className = `
+          bg-white
+          rounded-3xl
+          overflow-hidden
+          shadow-xl
+          hover:shadow-2xl
+          duration-300
+          group
+          flex
+          flex-col
+        `;
+
+        card.innerHTML = `
+          <div
+            class="h-64 overflow-hidden cursor-pointer"
+            onclick="abrirModalDetalhes(
+              '${nome}',
+              ${preco},
+              '${descricao}',
+              '${imagem}',
+              '${p.id}'
+            )">
+
+            <img
+              src="${imagem}"
+              class="w-full h-full object-cover group-hover:scale-105 duration-500"
+              onerror="this.src='https://via.placeholder.com/400x300'"
+            >
+
+          </div>
+
+          <div class="p-8 flex flex-col flex-1">
+
+            <h2 class="text-2xl font-bold text-[#5A2E15] mb-2">
+              ${p.nome}
+            </h2>
+
+            <p class="text-zinc-500 text-sm flex-1 mb-5">
+              ${p.descricao || 'Doce típico junino'}
+            </p>
+
+            <div class="flex justify-between items-center">
+
+              <span class="text-pink-500 font-black text-2xl">
+                ${precoFormatado}
+              </span>
+
+              <button
+                onclick="adicionarItem('${p.id}','${nome}',${preco})"
+                class="bg-pink-500 hover:bg-pink-600 text-white px-6 py-3 rounded-full font-bold">
+
+                🛒 Adicionar
+
+              </button>
+
+            </div>
+
+          </div>
+        `;
+
+        listaProdutos.appendChild(card);
+
+      });
+
+    }
+
+    // =====================================================
+    // CARRINHO
+    // =====================================================
+
+    function adicionarItem(id, nome, preco) {
+
+      const item = carrinho.find(i => i.id === id);
+
+      if (item) {
+        item.quantidade++;
+      } else {
+        carrinho.push({
+          id,
+          nome,
+          preco,
+          quantidade: 1
+        });
+      }
+
+      atualizarCarrinho();
+    }
+
+    function alterarQtd(id, delta) {
+
+      const item = carrinho.find(i => i.id === id);
+
+      if (!item) return;
+
+      item.quantidade += delta;
+
+      if (item.quantidade <= 0) {
+        carrinho = carrinho.filter(i => i.id !== id);
+      }
+
+      atualizarCarrinho();
+    }
+
+    function atualizarCarrinho() {
+
+      localStorage.setItem(
+        'festajunina_carrinho',
+        JSON.stringify(carrinho)
+      );
+
+      const total = carrinho.reduce(
+        (acc, item) =>
+          acc + item.preco * item.quantidade,
+        0
+      );
+
+      const qtd = carrinho.reduce(
+        (acc, item) =>
+          acc + item.quantidade,
+        0
+      );
+
+      const totalFormatado =
+        total.toLocaleString(
+          'pt-BR',
+          {
+            style: 'currency',
+            currency: 'BRL'
+          }
+        );
+
+      document.getElementById('carrinho-total')
+        .innerText = totalFormatado;
+
+      document.getElementById('modal-carrinho-total')
+        .innerText = totalFormatado;
+
+      const badge =
+        document.getElementById('carrinho-badge');
+
+      if (qtd > 0) {
+
+        badge.innerText = qtd;
+        badge.classList.remove('hidden');
+
+      } else {
+
+        badge.classList.add('hidden');
+
+      }
+
+      const footer =
+        document.getElementById('carrinho-footer');
+
+      if (carrinho.length > 0) {
+
+        footer.classList.remove('translate-y-full');
+
+      } else {
+
+        footer.classList.add('translate-y-full');
+
+      }
+
+      renderizarItensCarrinho();
+
+    }
+
+    function renderizarItensCarrinho() {
+
+      const container =
+        document.getElementById(
+          'carrinho-itens-container'
+        );
+
+      container.innerHTML = '';
+
+      if (carrinho.length === 0) {
+
+        container.innerHTML = `
+          <p class="text-center text-zinc-400 py-10">
+            Seu carrinho está vazio 🧺
+          </p>
+        `;
+
+        return;
+      }
+
+      carrinho.forEach(item => {
+
+        const subtotal =
+          (item.preco * item.quantidade)
+          .toLocaleString(
+            'pt-BR',
+            {
+              style: 'currency',
+              currency: 'BRL'
+            }
+          );
+
+        const div = document.createElement('div');
+
+        div.className = `
+          bg-white
+          rounded-2xl
+          border
+          border-[#F2DDBD]
+          p-4
+          flex
+          justify-between
+          items-center
+        `;
+
+        div.innerHTML = `
+          <div>
+
+            <h3 class="font-bold text-[#5A2E15]">
+              ${item.nome}
+            </h3>
+
+            <p class="text-pink-500 font-black">
+              ${subtotal}
+            </p>
+
+          </div>
+
+          <div class="flex items-center gap-3">
+
+            <button
+              onclick="alterarQtd('${item.id}',-1)"
+              class="w-8 h-8 bg-zinc-100 rounded-lg">
+              -
+            </button>
+
+            <span class="font-bold">
+              ${item.quantidade}
+            </span>
+
+            <button
+              onclick="alterarQtd('${item.id}',1)"
+              class="w-8 h-8 bg-zinc-100 rounded-lg">
+              +
+            </button>
+
+          </div>
+        `;
+
+        container.appendChild(div);
+
+      });
+
+    }
+
+    // =====================================================
+    // MODAIS
+    // =====================================================
+
+    function abrirModalDetalhes(nome, preco, desc, img, id) {
+
+      document.getElementById('detalhes-nome').innerText = nome;
+
+      document.getElementById('detalhes-preco').innerText =
+        preco.toLocaleString(
+          'pt-BR',
+          {
+            style: 'currency',
+            currency: 'BRL'
+          }
+        );
+
+      document.getElementById('detalhes-desc').innerText = desc;
+      document.getElementById('detalhes-img').src = img;
+
+      document.getElementById('detalhes-btn-add').onclick =
+        () => {
+
+          adicionarItem(id, nome, preco);
+          fecharModalDetalhes();
+
+        };
+
+      const modal = document.getElementById('detalhes-modal');
+      const content = document.getElementById('detalhes-modal-content');
+
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+
+      setTimeout(() => {
+        content.classList.remove('scale-95');
+      }, 10);
+
+    }
+
+    function fecharModalDetalhes() {
+
+      const modal = document.getElementById('detalhes-modal');
+      const content = document.getElementById('detalhes-modal-content');
+
+      content.classList.add('scale-95');
+
+      setTimeout(() => {
+        modal.classList.add('opacity-0', 'pointer-events-none');
+      }, 300);
+
+    }
+
+    function abrirModalCarrinho() {
+
+      const modal = document.getElementById('carrinho-modal');
+      const content = document.getElementById('carrinho-modal-content');
+
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+
+      setTimeout(() => {
+        content.classList.remove('scale-95');
+      }, 10);
+
+    }
+
+    function fecharModalCarrinho() {
+
+      const modal = document.getElementById('carrinho-modal');
+      const content = document.getElementById('carrinho-modal-content');
+
+      content.classList.add('scale-95');
+
+      setTimeout(() => {
+        modal.classList.add('opacity-0', 'pointer-events-none');
+      }, 300);
+
+    }
+
+    // =====================================================
+    // FINALIZAR
+    // =====================================================
+
+    function fecharPedido() {
+
+      if (carrinho.length === 0) return;
+
+      alert('Pedido realizado com sucesso 🎉');
+
+      carrinho = [];
+
+      atualizarCarrinho();
+
+      fecharModalCarrinho();
+
+    }
+
+    // =====================================================
+    // FECHAR CLICANDO FORA
+    // =====================================================
+
+    document.getElementById('detalhes-modal')
+      .addEventListener('click', (e) => {
+
+        if (e.target.id === 'detalhes-modal') {
+          fecharModalDetalhes();
+        }
+
+      });
+
+    document.getElementById('carrinho-modal')
+      .addEventListener('click', (e) => {
+
+        if (e.target.id === 'carrinho-modal') {
+          fecharModalCarrinho();
+        }
+
+      });
+
+    // =====================================================
+    // INIT
+    // =====================================================
+
+    function inicializar() {
+
+      const salvo =
+        localStorage.getItem('festajunina_carrinho');
+
+      if (salvo) {
+
+        try {
+
+          carrinho = JSON.parse(salvo);
+
+        } catch {
+
+          carrinho = [];
+
+        }
+
+      }
+
+      atualizarCarrinho();
+
+      carregarCategorias();
+
+    }
+
+    inicializar();
+
+  </script>
 
 </body>
 
